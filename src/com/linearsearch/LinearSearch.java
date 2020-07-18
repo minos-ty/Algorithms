@@ -1,6 +1,9 @@
 package com.linearsearch;
 
 public class LinearSearch {
+    //类构造方法私有化，防止用户创建类
+    private LinearSearch(){
+    }
 
     /**
      * 线性查找，根据目标元素返回数组中对应的下标
