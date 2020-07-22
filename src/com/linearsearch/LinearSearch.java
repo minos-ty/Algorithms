@@ -1,6 +1,6 @@
 package com.linearsearch;
 
-public class LinearSearch {
+public class LinearSearch{
     //类的构造方法私有化，防止用户创建类对象，使其只能通过类名直接调用方法
     private LinearSearch(){
     }
