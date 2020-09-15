@@ -1,4 +1,4 @@
-package com.linearsearch;
+package com.minos.linearsearch;
 
 import java.util.Objects;
 

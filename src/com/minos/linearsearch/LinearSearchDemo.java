@@ -1,4 +1,4 @@
-package com.linearsearch;
+package com.minos.linearsearch;
 
 public class LinearSearchDemo {
     public static void main(String[] args) {
