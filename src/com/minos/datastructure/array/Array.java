@@ -1,9 +1,7 @@
-package com.minos.datastructure;
-
-import java.util.Arrays;
-import java.util.Objects;
+package com.minos.datastructure.array;
 
 /**
+ * 自定义动态数组
  * size 的值就是数组的实际长度, 刚好是最后一个element的index+1
  *
  * @Author: minos
@@ -108,11 +106,19 @@ public class Array<E> {
      * @param index
      * @return
      */
-    E get(int index) {
+    public E get(int index) {
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException("Get failed. Index is illegal");
         }
         return data[index];
+    }
+
+    public E getLast(){
+        return get(size - 1);
+    }
+
+    public E getFirst(){
+        return get(0);
     }
 
     /**
@@ -177,7 +183,8 @@ public class Array<E> {
         data[size] = null;
 
         //删除元素后数组空闲容量占总容量一半则缩小总容量
-        if( size == data.length / 2){
+        //data.length / 4 lazy策略解决复杂度震荡问题
+        if (size == data.length / 4 && data.length / 2 != 0) {
             resize(data.length / 2);
         }
         return ret;

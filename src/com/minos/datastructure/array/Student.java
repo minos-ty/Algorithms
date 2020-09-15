@@ -1,4 +1,4 @@
-package com.minos.datastructure;
+package com.minos.datastructure.array;
 
 /**
  * @Author: minos

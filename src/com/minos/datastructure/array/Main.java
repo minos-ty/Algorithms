@@ -1,4 +1,4 @@
-package com.minos.datastructure;
+package com.minos.datastructure.array;
 
 /**
  * 数组的优点:快速查询
