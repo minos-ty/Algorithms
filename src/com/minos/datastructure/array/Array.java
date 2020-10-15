@@ -12,14 +12,6 @@ public class Array<E> {
     private int size;
 
     /**
-     * 无参构造
-     * 默认 capacity = 10
-     */
-    public Array() {
-        this(10);
-    }
-
-    /**
      * 构造函数
      *
      * @param capacity 用户传入的数组容量
@@ -28,6 +20,15 @@ public class Array<E> {
         //java中new泛型数组需要先new一个Object类型数组后再强转
         data = (E[]) new Object[capacity];
         size = 0;
+    }
+
+    /**
+     * 无参构造
+     * 默认 capacity = 10
+     */
+    public Array() {
+        // this()调用类构造函数，只能在构造函数中调用且必须放在第一行
+        this(10);
     }
 
     /**
@@ -69,7 +70,7 @@ public class Array<E> {
         }
 
         if (size == data.length) {
-            //动态扩容
+            //动态扩容 JAVA中ArrayList的扩容因子为1.5倍
             resize(2 * data.length);
         }
 
