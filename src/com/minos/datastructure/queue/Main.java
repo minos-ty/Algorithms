@@ -6,13 +6,14 @@ package com.minos.datastructure.queue;
  */
 public class Main {
     public static void main(String[] args) {
-        ArrayQueue<Integer> arrayQueue = new ArrayQueue<>();
+        //ArrayQueue<Integer> arrayQueue = new ArrayQueue<>();
+        LinkedListQueue<Integer> queue = new LinkedListQueue<>();
         for (int i = 0; i < 10; i++){
-            arrayQueue.enqueue(i);
-            System.out.println(arrayQueue);
+            queue.enqueue(i);
+            System.out.println(queue);
             if (i % 3 == 2){
-                arrayQueue.dequeue();
-                System.out.println(arrayQueue);
+                queue.dequeue();
+                    System.out.println(queue);
             }
         }
     }

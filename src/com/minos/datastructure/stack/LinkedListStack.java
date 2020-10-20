@@ -1,32 +1,49 @@
 package com.minos.datastructure.stack;
 
+import com.minos.datastructure.LinkedList.LinkedList;
+
 /**
  * @Author: minos
  * @Date: 2020/10/18 18:06
  */
 public class LinkedListStack<E> implements Stack<E> {
+
+    private LinkedList<E> list;
+
+    public LinkedListStack(){
+        list = new LinkedList<>();
+    }
+
     @Override
     public int getSize() {
-        return 0;
+        return list.getSize();
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return list.isEmpty();
     }
 
     @Override
     public void push(E e) {
-
+        list.addFirst(e);
     }
 
     @Override
     public E pop() {
-        return null;
+        return list.removeFirst();
     }
 
     @Override
     public E peak() {
-        return null;
+        return list.getFirst();
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder res = new StringBuilder();
+        res.append("Stack: top ");
+        res.append(list);
+        return res.toString();
     }
 }
