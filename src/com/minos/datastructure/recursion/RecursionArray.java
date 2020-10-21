@@ -1,6 +1,5 @@
 package com.minos.datastructure.recursion;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,8 +22,6 @@ public class RecursionArray {
         if (list == null){
             return null;
         }
-
-
 
         return null;
     }
