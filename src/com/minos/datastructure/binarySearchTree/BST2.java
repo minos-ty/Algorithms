@@ -277,7 +277,9 @@ public class BST2<E extends Comparable<E>> {
      * @return
      */
     public E removeMin(){
+        //返回要当前树中的最小值
         E ret = minimum();
+        //调用删除函数删除最小值所在的节点
         root =  removeMin(root);
         return ret;
     }
@@ -303,7 +305,7 @@ public class BST2<E extends Comparable<E>> {
 
 
     /**
-     * 从二分搜索树中删除最小值所在的点，返回最小值
+     * 从二分搜索树中删除最小值所在的点，返回最大值
      * @return
      */
     public E removeMax(){

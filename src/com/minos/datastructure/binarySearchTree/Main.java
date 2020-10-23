@@ -11,13 +11,11 @@ public class Main {
         for(int num : nums){
             bst2.add(num);
         }
-
-//        bst2.preOder();
-//        System.out.println();
-//        //bst2.inOder();
-//        bst2.preOrderNR();
-
-        bst2.levelOrder();
+        //System.out.println(bst2.toString());
+        System.out.println(bst2.removeMin());
+        System.out.println(bst2.removeMin());
+        System.out.println("-----------------");
+        System.out.println(bst2.toString());
 
     }
 }
