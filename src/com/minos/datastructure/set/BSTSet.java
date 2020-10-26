@@ -20,17 +20,17 @@ public class BSTSet<E extends Comparable<E>> implements Set<E>{
 
     @Override
     public void add(E e) {
-
+        bst.add(e);
     }
 
     @Override
     public void remove(E e) {
-
+        bst.remove(e);
     }
 
     @Override
     public boolean contains(E e) {
-        return false;
+        return bst.contains(e);
     }
 
     @Override
