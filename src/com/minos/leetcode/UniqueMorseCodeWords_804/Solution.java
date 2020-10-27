@@ -43,10 +43,9 @@ import java.util.TreeSet;
  * 链接：https://leetcode-cn.com/problems/unique-morse-code-words。
  *
  * @Author: minos
- * @Date: 2020/10/27 16:53
+ * @Date: 2020/10/27 16:53  这代码写的一点都不优雅，
  */
 
-import java.util.TreeSet;
 public class Solution {
     public static int uniqueMorseRepresentations(String[] words) {
 
