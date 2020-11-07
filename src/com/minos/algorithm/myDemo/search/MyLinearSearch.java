@@ -1,4 +1,4 @@
-package com.minos.algorithm.myDemo.linearSearch;
+package com.minos.algorithm.myDemo.search;
 
 import java.util.List;
 

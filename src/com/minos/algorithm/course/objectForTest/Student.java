@@ -1,4 +1,4 @@
-package com.minos.algorithm.course.search;
+package com.minos.algorithm.course.objectForTest;
 
 import java.util.Objects;
 
@@ -6,7 +6,7 @@ import java.util.Objects;
  * @Author: minos
  * @Date: 2020/11/6 08:42
  */
-public class Student {
+public class Student implements Comparable<Student>{
     private String name;
     private int age;
 
@@ -52,4 +52,14 @@ public class Student {
         return Objects.hash(name, age);
     }
 
+    @Override
+    public int compareTo(Student o) {
+        return this.age - o.age;
+    }
+
+    @Override
+    public String toString() {
+        //比较优雅的toString重写
+        return String.format("Student(name: %s, age: %d)", name, age);
+    }
 }

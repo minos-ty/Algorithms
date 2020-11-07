@@ -1,5 +1,7 @@
 package com.minos.algorithm.course.search;
 
+import com.minos.algorithm.course.objectForTest.ArrayGenerator;
+
 /**
  * @Author: minos
  * @Date: 2020/11/6 00:00
