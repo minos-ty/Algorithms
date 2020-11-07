@@ -8,7 +8,11 @@ package com.minos.datastructure.array;
  * @Date: 2020/9/14 21:09
  */
 public class Array<E> {
+
     private E[] data;
+    /**
+     * 实际存放数据的个数
+     */
     private int size;
 
     /**
@@ -122,11 +126,11 @@ public class Array<E> {
         return data[index];
     }
 
-    public E getLast(){
+    public E getLast() {
         return get(size - 1);
     }
 
-    public E getFirst(){
+    public E getFirst() {
         return get(0);
     }
 
@@ -179,20 +183,27 @@ public class Array<E> {
      * @return 返回喊出的元素
      */
     public E remove(int index) {
+
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException("Remove failed. Index is illegal");
         }
+
         E ret = data[index];
         //index后一位的每一个元素向前挪一位
-        for (int i = index + 1; i < size; i++) {
+        for (int i = +1; i < size; i++) {
             data[i - 1] = data[i];
         }
         size--;
         //是的size指向的地址资源可以被垃圾回收机制自动回收 loitering objects != memory leak
         data[size] = null;
 
-        //删除元素后数组空闲容量占总容量一半则缩小总容量
-        //data.length / 4 lazy策略解决复杂度震荡问题
+        /*
+            删除元素后数组空闲容量占总容量3/4则缩小总容量
+            缩小1/2
+            data.length / 4 lazy策略解决复杂度震荡问题
+            data.length / 2 != 0 防止当data.length = 1时data.length / 2 = 0的情况
+            不能new一个空间为0 的数组
+        */
         if (size == data.length / 4 && data.length / 2 != 0) {
             resize(data.length / 2);
         }
@@ -231,6 +242,7 @@ public class Array<E> {
 
     /**
      * 交换两个元素的位置
+     *
      * @param i
      * @param j
      */
@@ -266,14 +278,15 @@ public class Array<E> {
      * @param newCapacity
      */
     private void resize(int newCapacity) {
+
         E[] newData = (E[]) new Object[newCapacity];
+        //把原数组中的数据复制到新数组中
         for (int i = 0; i < size; i++) {
             newData[i] = data[i];
         }
         //让data指向newData的地址
         data = newData;
     }
-
 
 
 }
