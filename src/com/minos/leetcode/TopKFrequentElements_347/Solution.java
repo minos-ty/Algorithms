@@ -1,6 +1,6 @@
 package com.minos.leetcode.TopKFrequentElements_347;
 
-import com.minos.datastructure.maxHeap.PriorityQueue;
+import com.minos.datastructure.linearStructure.maxHeap.PriorityQueue;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -13,6 +13,7 @@ import com.minos.leetcode.RemoveLinkedListElements_203.ListNode;
  * @Date: 2020/10/18 19:10
  */
 class Solution {
+
     public ListNode removeElements(ListNode head, int val) {
         while (head != null && head.val == val) {
             ListNode delNode = head;
@@ -27,6 +28,7 @@ class Solution {
         ListNode prev = head;
         while (prev.next != null) {
             if (prev.next.val == val) {
+                // 删除当前节点后，当前位置的新节点内容仍然可能是待删值，这里不应该把prev往后挪
                 ListNode delNode = prev.next;
                 prev.next = delNode.next;
                 delNode.next = null;
@@ -34,7 +36,6 @@ class Solution {
                prev = prev.next;
             }
         }
-
 
         return head;
     }

@@ -1,7 +1,5 @@
 package com.minos.leetcode.IntersectionOfTwoArraysII_350;
 
-import com.minos.datastructure.array.Array;
-
 import java.util.ArrayList;
 import java.util.TreeMap;
 
