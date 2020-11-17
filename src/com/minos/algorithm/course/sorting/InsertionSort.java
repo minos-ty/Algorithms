@@ -1,10 +1,9 @@
 package com.minos.algorithm.course.sorting;
 
-import com.minos.algorithm.course.objectForTest.ArrayGenerator;
-import com.minos.algorithm.course.objectForTest.SortingHelper;
+import com.minos.algorithm.course.objectfortest.ArrayGenerator;
+import com.minos.algorithm.course.objectfortest.SortingHelper;
 
 import java.util.Arrays;
-import java.util.SortedSet;
 
 /**
  * @Author: minos
@@ -56,7 +55,7 @@ public class InsertionSort {
 
             E temp = arr[i];
             int j;
-            //注意这里是哪当前获得的较小值和他前面的元素依次比较
+            //注意这里是拿当前获得的较小值和他前面的元素依次比较
             //较小值往前插
             for (j = i; j - 1 >= 0 && temp.compareTo(arr[j - 1]) < 0; j--) {
                 //如果arr[j] < arr[j - 1], 则把 arr[j - 1] 向右移

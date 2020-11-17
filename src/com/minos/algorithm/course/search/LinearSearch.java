@@ -1,6 +1,6 @@
 package com.minos.algorithm.course.search;
 
-import com.minos.algorithm.course.objectForTest.ArrayGenerator;
+import com.minos.algorithm.course.objectfortest.ArrayGenerator;
 
 /**
  * @Author: minos
