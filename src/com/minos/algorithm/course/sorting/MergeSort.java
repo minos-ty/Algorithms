@@ -6,6 +6,7 @@ import com.minos.algorithm.course.objectfortest.SortingHelper;
 import java.util.Arrays;
 
 /**
+ * 时间复杂度： o(nlogn)
  * @Author: minos
  * @Date: 2020/11/17 19:14
  */
@@ -42,9 +43,40 @@ public class MergeSort {
 
         sort(arr, l, mid);
         sort(arr, mid + 1, r);
+
+
         merge(arr, l, mid, r);
 
+
     }
+
+    /**
+     * 优化
+     */
+    public static <E extends Comparable<E>> void sort2(E[] arr) {
+        sort2(arr, 0, arr.length - 1);
+    }
+
+    /**
+     * 优化
+     */
+    private static <E extends Comparable<E>> void sort2(E[] arr, int l, int r) {
+
+        // 如果数据规模较小，调用插入排序法来排序
+        if (r - l <= 15) {
+            InsertionSort.sort(arr, l, r);
+            return;
+        }
+
+        int mid = l + (r - l) / 2;
+        sort2(arr, l, mid);
+        sort2(arr, mid + 1, r);
+        if (arr[mid].compareTo(arr[mid + 1]) > 0) {
+            merge(arr, l, mid, r);
+        }
+
+    }
+
 
     /**
      * 归并的过程
@@ -84,19 +116,81 @@ public class MergeSort {
         }
     }
 
+    /**
+     * 优化 ， 对merge优化
+     */
+    public static <E extends Comparable<E>> void sort3(E[] arr) {
+        E[] temp = Arrays.copyOf(arr, arr.length);
+        sort3(arr, 0, arr.length - 1, temp);
+    }
+
+    private static <E extends Comparable<E>> void sort3(E[] arr, int l, int r, E[] temp) {
+
+        // 如果数据规模较小，调用插入排序法来排序
+        if (r - l <= 15) {
+            InsertionSort.sort(arr, l, r);
+            return;
+        }
+
+        int mid = l + (r - l) / 2;
+        sort3(arr, l, mid, temp);
+        sort3(arr, mid + 1, r, temp);
+        if (arr[mid].compareTo(arr[mid + 1]) > 0) {
+            merge2(arr, l, mid, r, temp);
+        }
+
+    }
+
+    private static <E extends Comparable<E>> void merge2(E[] arr, int l, int mid, int r, E[] temp) {
+
+        // arr中从l开始的元素拷贝到temp中从l位置开始存 拷贝长度为 r - l + 1
+        System.arraycopy(arr, l, temp, l, r - l + 1);
+
+        int i = l, j = mid + 1;
+
+        for (int k = l; k <= r; k++) {
+            if (i > mid) {
+                arr[k] = temp[j];
+                j++;
+            } else if (j > r) {
+
+                arr[k] = temp[i];
+                i++;
+            } else if (temp[i].compareTo(temp[j]) <= 0) {
+                arr[k] = temp[i];
+                i++;
+            } else {
+                arr[k] = temp[j];
+                j++;
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
 
-        int n = 100000;
+        int n = 5000000;
+
+        // 优化前后的对比
         Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
         Integer[] arr2 = Arrays.copyOf(arr, arr.length);
         Integer[] arr3 = Arrays.copyOf(arr, arr.length);
-
-        // MergeSort, n = 100000 : 0.136892s
         SortingHelper.sortTest("MergeSort", arr);
-        // InsertionSort, n = 100000 : 18.145893s
-        SortingHelper.sortTest("InsertionSort", arr2);
-        // SelectionSort, n = 100000 : 24.946469s
-        SortingHelper.sortTest("SelectionSort", arr3);
+        SortingHelper.sortTest("MergeSort2", arr2);
+        SortingHelper.sortTest("MergeSort3", arr3);
+
+
+        // 不同排序优劣的对比  n = 100000;
+//        Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
+//        Integer[] arr2 = Arrays.copyOf(arr, arr.length);
+//        Integer[] arr3 = Arrays.copyOf(arr, arr.length);
+//
+//        // MergeSort, n = 100000 : 0.136892s
+//        SortingHelper.sortTest("MergeSort", arr);
+//        // InsertionSort, n = 100000 : 18.145893s
+//        SortingHelper.sortTest("InsertionSort", arr2);
+//        // SelectionSort, n = 100000 : 24.946469s
+//        SortingHelper.sortTest("SelectionSort", arr3);
 
     }
 }

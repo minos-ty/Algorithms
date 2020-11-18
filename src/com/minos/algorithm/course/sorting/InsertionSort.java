@@ -6,6 +6,7 @@ import com.minos.algorithm.course.objectfortest.SortingHelper;
 import java.util.Arrays;
 
 /**
+ * 时间复杂度：O(n^2)
  * @Author: minos
  * @Date: 2020/11/7 11:24
  */
@@ -58,6 +59,23 @@ public class InsertionSort {
             //注意这里是拿当前获得的较小值和他前面的元素依次比较
             //较小值往前插
             for (j = i; j - 1 >= 0 && temp.compareTo(arr[j - 1]) < 0; j--) {
+                //如果arr[j] < arr[j - 1], 则把 arr[j - 1] 向右移
+                arr[j] = arr[j - 1];
+            }
+            // 当arr[j] > arr[j-1]时, 此时的较小值找到插入index j
+            arr[j] = temp;
+        }
+    }
+
+    public static <E extends Comparable<E>> void sort(E[] arr, int l, int r) {
+
+        for (int i = l; i <= r; i++) {
+
+            E temp = arr[i];
+            int j;
+            //注意这里是拿当前获得的较小值和他前面的元素依次比较
+            //较小值往前插
+            for (j = i; j - 1 >= l && temp.compareTo(arr[j - 1]) < 0; j--) {
                 //如果arr[j] < arr[j - 1], 则把 arr[j - 1] 向右移
                 arr[j] = arr[j - 1];
             }

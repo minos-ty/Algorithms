@@ -43,7 +43,12 @@ public class SortingHelper {
             InsertionSortHM.sort(arr);
         }else if (sortName.equals("MergeSort")) {
             MergeSort.sort(arr);
+        }else if (sortName.equals("MergeSort2")) {
+            MergeSort.sort2(arr);
+        }else if (sortName.equals("MergeSort3")) {
+            MergeSort.sort3(arr);
         }
+
         long endTime = System.nanoTime();
 
         //1,000,000,000 纳秒换算成秒
