@@ -1,4 +1,4 @@
-package com.minos.algorithm.mydemo.binarysearch;
+package com.minos.algorithm.mydemo.search;
 
 import java.util.ArrayList;
 import java.util.Collections;

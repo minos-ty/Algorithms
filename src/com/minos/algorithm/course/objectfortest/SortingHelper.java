@@ -2,6 +2,7 @@ package com.minos.algorithm.course.objectfortest;
 
 import com.minos.algorithm.course.sorting.InsertionSort;
 import com.minos.algorithm.course.sorting.MergeSort;
+import com.minos.algorithm.course.sorting.QuickSort;
 import com.minos.algorithm.course.sorting.SelectionSort;
 import com.minos.algorithm.mydemo.sorting.InsertionSortHM;
 import com.minos.algorithm.mydemo.sorting.SelectionSortHM;
@@ -47,6 +48,8 @@ public class SortingHelper {
             MergeSort.sort2(arr);
         }else if (sortName.equals("MergeSort3")) {
             MergeSort.sort3(arr);
+        }else if (sortName.equals("QuickSort")) {
+            QuickSort.sort(arr);
         }
 
         long endTime = System.nanoTime();
