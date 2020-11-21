@@ -34,22 +34,26 @@ public class SortingHelper {
         long startTime = System.nanoTime();
         if (sortName.equals("SelectionSort")) {
             SelectionSort.sort(arr);
-        }else if (sortName.equals("SelectionSortHM")) {
+        } else if (sortName.equals("SelectionSortHM")) {
             SelectionSortHM.sort(arr);
-        }else if (sortName.equals("InsertSort")) {
+        } else if (sortName.equals("InsertSort")) {
             InsertSort.sort(arr);
-        }else if (sortName.equals("InsertionSort")) {
+        } else if (sortName.equals("InsertionSort")) {
             InsertionSort.sort(arr);
-        }else if (sortName.equals("InsertionSortHM")) {
+        } else if (sortName.equals("InsertionSortHM")) {
             InsertionSortHM.sort(arr);
-        }else if (sortName.equals("MergeSort")) {
+        } else if (sortName.equals("MergeSort")) {
             MergeSort.sort(arr);
-        }else if (sortName.equals("MergeSort2")) {
+        } else if (sortName.equals("MergeSort2")) {
             MergeSort.sort2(arr);
-        }else if (sortName.equals("MergeSort3")) {
+        } else if (sortName.equals("MergeSort3")) {
             MergeSort.sort3(arr);
-        }else if (sortName.equals("QuickSort")) {
+        } else if (sortName.equals("QuickSort")) {
             QuickSort.sort(arr);
+        } else if (sortName.equals("QuickSort2ways")) {
+            QuickSort.sort2ways(arr);
+        } else if (sortName.equals("QuickSort3ways")) {
+            QuickSort.sort3ways(arr);
         }
 
         long endTime = System.nanoTime();
@@ -59,9 +63,9 @@ public class SortingHelper {
 
         //验证排序算法是否正确
         if (!SortingHelper.isSorted(arr)) {
-            throw new RuntimeException(sortName +  " failed.");
+            throw new RuntimeException(sortName + " failed.");
         }
-        System.out.println(String.format("%s, n = %d : %fs",sortName, arr.length, time));
+        System.out.println(String.format("%s, n = %d : %fs", sortName, arr.length, time));
     }
 }
 
