@@ -37,7 +37,6 @@ public class BST1<E extends Comparable<E>> {
 
     /**
      * 调用提供的递归增加元素e
-     *
      * @param e
      */
     public void add(E e) {

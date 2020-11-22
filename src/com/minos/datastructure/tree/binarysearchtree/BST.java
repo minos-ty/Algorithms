@@ -239,7 +239,6 @@ public class BST<E extends Comparable<E>> {
         if (size == 0) {
             throw new IllegalArgumentException("BST is empty.");
         }
-
         return minimum(root).e;
     }
 
@@ -265,7 +264,6 @@ public class BST<E extends Comparable<E>> {
         if (size == 0) {
             throw new IllegalArgumentException("BST is empty.");
         }
-
         return maximum(root).e;
     }
 
@@ -310,7 +308,6 @@ public class BST<E extends Comparable<E>> {
             size--;
             return rightNode;
         }
-
         node.left = removeMin(node.left);
         return node;
     }
@@ -342,7 +339,6 @@ public class BST<E extends Comparable<E>> {
             size--;
             return rightNode;
         }
-
         node.right = removeMax(node.right);
         return node;
     }
