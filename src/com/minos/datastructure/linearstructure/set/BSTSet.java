@@ -1,6 +1,6 @@
 package com.minos.datastructure.linearstructure.set;
 
-import com.minos.datastructure.tree.binarysearchtree.BST2;
+import com.minos.datastructure.tree.binarysearchtree.BST;
 
 /**
  * 基于二分搜索树实现的集合
@@ -12,10 +12,10 @@ public class BSTSet<E extends Comparable<E>> implements Set<E>{
     /**
      * 二分搜索树的完整实现是BST2
      */
-    private BST2<E> bst;
+    private BST<E> bst;
 
     public BSTSet() {
-        bst = new BST2<>();
+        bst = new BST<>();
     }
 
     @Override
