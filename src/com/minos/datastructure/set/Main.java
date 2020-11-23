@@ -3,37 +3,43 @@ package com.minos.datastructure.set;
 import java.util.ArrayList;
 
 /**
+ * Set的两种不同实现效率的比较
+ *
  * @Author: minos
  * @Date: 2020/11/23 19:46
  */
 public class Main {
 
+    private static double testSet(Set<String> set, String fileName) {
+        long startTime = System.nanoTime();
+
+        ArrayList<String> words = new ArrayList<>();
+        if (FileOperation.readFile(fileName, words)) {
+            System.out.println("Total words: " + words.size());
+            for (String word : words) {
+                set.add(word);
+            }
+            System.out.println("Total different words: " + set.getSize());
+        }
+
+        long endTime = System.nanoTime();
+        //单位 s
+        return (endTime - startTime) / 1000000000.0;
+    }
+
     public static void main(String[] args) {
 
-        System.out.println("Pride and Prejudice");
-        ArrayList<String> wordsOne = new ArrayList<>();
-        FileOperation.readFile("src/com/minos/datastructure/set/files/pride-and-prejudice.txt", wordsOne);
-        // 使用ArrayList来统计单词数是包含重复单词的
-        System.out.println("Total words: " + wordsOne.size());
+        String filename = "src/com/minos/datastructure/set/files/pride-and-prejudice.txt";
 
-        BSTSet<String> setOne = new BSTSet<>();
-        for (String word: wordsOne) {
-            setOne.add(word);
-        }
-        System.out.println("Total different words:" + setOne.getSize());
+        BSTSet<String> bstSet = new BSTSet<>();
+        double timeOne = testSet(bstSet, filename);
+        System.out.println("BSTset: "+ timeOne + "s");
         System.out.println();
 
-        System.out.println("A tale of two cities");
-        ArrayList<String> woedsTwo = new ArrayList<>();
-        FileOperation.readFile("src/com/minos/datastructure/set/files/a-tale-of-two-cities.txt", woedsTwo);
-        // 使用ArrayList来统计单词数是包含重复单词的
-        System.out.println("Total words: " + woedsTwo.size());
-
-        BSTSet<String> setTwo = new BSTSet<>();
-        for (String word: woedsTwo) {
-            setTwo.add(word);
-        }
-        System.out.println("Total different words:" + setTwo.getSize());
-
+        LinkedListSet<String> linkedListSet = new LinkedListSet<>();
+        double timeTwo = testSet(linkedListSet, filename);
+        System.out.println("LinkedListSet: "+ timeTwo + "s");
     }
+
+
 }
