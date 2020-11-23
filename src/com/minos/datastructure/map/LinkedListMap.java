@@ -1,12 +1,16 @@
-package com.minos.datastructure.linearstructure.map;
+package com.minos.datastructure.map;
+
+import java.util.ArrayList;
 
 /**
+ * 基于链表实现
+ *
  * @Author: minos
  * @Date: 2020/10/26 20:00
  */
-public class LinkedListMap<K, V> implements Map<K, V>{
+public class LinkedListMap<K, V> implements Map<K, V> {
 
-    private class Node{
+    private class Node {
         public K key;
         public V value;
         public Node next;
@@ -26,8 +30,8 @@ public class LinkedListMap<K, V> implements Map<K, V>{
         }
 
         @Override
-        public String toString(){
-            return key.toString() + " : " +value.toString();
+        public String toString() {
+            return key.toString() + " : " + value.toString();
         }
 
     }
@@ -42,10 +46,12 @@ public class LinkedListMap<K, V> implements Map<K, V>{
 
     /**
      * 找key值所在的节点
+     *
      * @param key
      * @return
      */
-    private Node getNode(K key){
+    private Node getNode(K key) {
+        //  dummyHead.next 代表头结点
         Node curr = dummyHead.next;
         while (curr != null) {
             if (curr.key.equals(key)) {
@@ -60,11 +66,13 @@ public class LinkedListMap<K, V> implements Map<K, V>{
     @Override
     public void add(K key, V value) {
 
+        // 确认传入的key是否已经存在
         Node node = getNode(key);
         if (node == null) {
+            // 在原链表的头插入新节点
             dummyHead.next = new Node(key, value, dummyHead.next);
             size++;
-        }else {
+        } else {
             //如果用户传入key已经存在，那么更新key对应的value
             node.value = value;
         }
@@ -111,7 +119,7 @@ public class LinkedListMap<K, V> implements Map<K, V>{
 
         Node node = getNode(key);
         if (node == null) {
-            throw new IllegalArgumentException(key + "doesn't exist ! ");
+            throw new IllegalArgumentException(key + "doesn't exist !");
         }
         node.value = newValue;
     }
@@ -124,5 +132,30 @@ public class LinkedListMap<K, V> implements Map<K, V>{
     @Override
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    public static void main(String[] args) {
+
+        String filename = "src/com/minos/datastructure/set/files/pride-and-prejudice.txt";
+        System.out.println("Pride and Prejudice");
+        ArrayList<String> words = new ArrayList<>();
+
+        if (FileOperation.readFile(filename, words)) {
+            System.out.println("Total words: " + words.size());
+
+            // 词频统计
+            LinkedListMap<String, Integer> map = new LinkedListMap<>();
+            for (String word : words) {
+                if (map.contains(word)) {
+                    map.set(word, map.get(word) + 1);
+                } else {
+                    map.add(word, 1);
+                }
+            }
+
+            System.out.println("Total different words: " + map.getSize());
+            System.out.println("Frequency of PRIDE: " + map.get("pride"));
+            System.out.println("Frequency of PREJUDICE: " + map.get("prejudice"));
+        }
     }
 }

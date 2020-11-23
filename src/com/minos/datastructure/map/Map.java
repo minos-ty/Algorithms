@@ -1,4 +1,4 @@
-package com.minos.datastructure.linearstructure.map;
+package com.minos.datastructure.map;
 
 /**
  * @Author: minos

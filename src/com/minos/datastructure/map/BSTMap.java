@@ -1,6 +1,10 @@
-package com.minos.datastructure.linearstructure.map;
+package com.minos.datastructure.map;
+
+import java.util.ArrayList;
 
 /**
+ * 基于二分搜索树实现
+ *
  * @Author: minos
  * @Date: 2020/10/26 20:56
  */
@@ -28,7 +32,6 @@ public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
     }
 
 
-
     @Override
     public void add(K key, V value) {
         root = add(root, key, value);
@@ -37,6 +40,7 @@ public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
     /**
      * 向以node为根的二分搜索树中插入元素(key, value), 递归算法
      * 返回插入新节点后的二分搜索树的根
+     *
      * @param node
      * @param key
      * @param value
@@ -45,15 +49,15 @@ public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
     private Node add(Node node, K key, V value) {
 
         if (node == null) {
-            size ++;
+            size++;
             return new Node(key, value);
         }
 
         if (key.compareTo(node.key) < 0) {
             node.left = add(node.left, key, value);
-        }else if (key.compareTo(node.key) > 0) {
+        } else if (key.compareTo(node.key) > 0) {
             node.right = add(node.right, key, value);
-        }else { //key.compareTo(node.key) == 0
+        } else { //key.compareTo(node.key) == 0
             node.value = value;
         }
 
@@ -62,11 +66,12 @@ public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
 
     /**
      * 返回以node为根节点的二分搜索树中，key所在的节点
+     *
      * @param node
      * @param key
      * @return
      */
-    private Node getNode (Node node, K key) {
+    private Node getNode(Node node, K key) {
 
         if (node == null) {
             return null;
@@ -74,15 +79,16 @@ public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
 
         if (key.compareTo(node.key) == 0) {
             return node;
-        }else if(key.compareTo(node.key) < 0) {
+        } else if (key.compareTo(node.key) < 0) {
             return getNode(node.left, key);
-        }else { //key.compareTo(node.key) > 0
+        } else { //key.compareTo(node.key) > 0
             return getNode(node.right, key);
         }
     }
 
     /**
      * 返回以node为根二分搜索树的最小值所在的节点
+     *
      * @param node
      * @return
      */
@@ -96,6 +102,7 @@ public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
     /**
      * 删除掉以node为根的二分搜索树中的最小的点
      * 返回删除节点后新的二分搜索树的根
+     *
      * @param node
      * @return
      */
@@ -114,6 +121,7 @@ public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
 
     /**
      * 从二分搜索树种删除键为key元素
+     *
      * @param key
      * @return
      */
@@ -131,6 +139,7 @@ public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
     /**
      * 删除掉以node为根的二分搜索树中键为key的节点， 递归算法
      * 返回删除节点后新的二分搜索树的根
+     *
      * @param node
      * @param key
      * @return
@@ -143,10 +152,10 @@ public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
         if (key.compareTo(node.key) < 0) {
             node.left = remove(node.left, key);
             return node;
-        }else if(key.compareTo(node.key) > 0){
+        } else if (key.compareTo(node.key) > 0) {
             node.right = remove(node.right, key);
             return node;
-        }else { // key.compareTo(node.key) == 0
+        } else { // key.compareTo(node.key) == 0
 
             //带删除节点左子树为空的情况
             if (node.left == null) {
@@ -190,12 +199,12 @@ public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
 
     @Override
     public void set(K key, V newValue) {
-         Node node = getNode(root, key);
-         if (node == null) {
-             throw new IllegalArgumentException(key + "doesn't exist !");
-         }
+        Node node = getNode(root, key);
+        if (node == null) {
+            throw new IllegalArgumentException(key + " doesn't exist !");
+        }
 
-         node.value = newValue;
+        node.value = newValue;
     }
 
     @Override
@@ -206,5 +215,30 @@ public class BSTMap<K extends Comparable<K>, V> implements Map<K, V> {
     @Override
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    public static void main(String[] args) {
+
+        String filename = "src/com/minos/datastructure/set/files/pride-and-prejudice.txt";
+        System.out.println("Pride and Prejudice");
+        ArrayList<String> words = new ArrayList<>();
+
+        if (FileOperation.readFile(filename, words)) {
+            System.out.println("Total words: " + words.size());
+
+            // 词频统计
+            BSTMap<String, Integer> map = new BSTMap<>();
+            for (String word : words) {
+                if (map.contains(word)) {
+                    map.set(word, map.get(word) + 1);
+                } else {
+                    map.add(word, 1);
+                }
+            }
+
+            System.out.println("Total different words: " + map.getSize());
+            System.out.println("Frequency of PRIDE: " + map.get("pride"));
+            System.out.println("Frequency of PREJUDICE: " + map.get("prejudice"));
+        }
     }
 }
