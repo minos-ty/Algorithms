@@ -1,10 +1,11 @@
-package com.minos.datastructure.linearstructure.set;
+package com.minos.datastructure.set;
 
 /**
  * @Author: minos
- * @Date: 2020/10/26 18:04
+ * @Date: 2020/11/23 19:24
  */
 public interface Set<E> {
+
     void add(E e);
     void remove(E e);
     boolean contains(E e);
