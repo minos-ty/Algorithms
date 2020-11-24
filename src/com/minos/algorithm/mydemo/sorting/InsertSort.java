@@ -1,7 +1,7 @@
 package com.minos.algorithm.mydemo.sorting;
 
-import com.minos.algorithm.course.objectfortest.ArrayGenerator;
-import com.minos.algorithm.course.objectfortest.SortingHelper;
+import com.minos.algorithm.objectfortest.ArrayGenerator;
+import com.minos.algorithm.objectfortest.SortingHelper;
 
 /**
  * @Author: minos

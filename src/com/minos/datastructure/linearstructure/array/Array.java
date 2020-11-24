@@ -35,6 +35,10 @@ public class Array<E> {
         this(10);
     }
 
+    /**
+     * 根据用户传入的数组生成一个新数组
+     * @param arr
+     */
     public Array(E[] arr) {
         data = (E[]) new Object[arr.length];
         for (int i = 0; i < arr.length; i++) {
