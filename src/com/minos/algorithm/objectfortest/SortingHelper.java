@@ -61,6 +61,8 @@ public class SortingHelper {
             BubbleSort.sort2(arr);
         }else if (sortName.equals("BubbleSort3")){
             BubbleSort.sort3(arr);
+        }else if (sortName.equals("ShellSort")) {
+            ShellSort.sort(arr);
         }
 
         long endTime = System.nanoTime();
